@@ -11,11 +11,13 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/movie/:imdbId" element={<MovieDetails />}></Route>
-        <Route path="*" element={<PageNotFound />}></Route>
-      </Routes>
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/movie/:imdbId" element={<MovieDetails />}></Route>
+          <Route path="*" element={<PageNotFound />}></Route>
+        </Routes>
+      </div>
       <Footer />
     </div>
   );
