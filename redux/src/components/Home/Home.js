@@ -7,24 +7,11 @@ import { fetchAsyncMovies } from "../../features/movies/movieSlice";
 const Home = () => {
 <<<<<<< HEAD
   const dispatch = useDispatch();
-  //for apis and for rendering onchange of certain elements
+  
   useEffect(() => {
     dispatch(fetchAsyncMovies());
     // dispatch(fetchAsyncShows());
   }, [dispatch]);
-
-  // for shows
-  // useEffect(() => {
-  //   const tvshows = async () => {
-  //     const res = await axios
-  //       .get(`https://www.episodate.com/api/most-popular?page=1`)
-  //       .catch((err) => {
-  //         console.log("Err :", err);
-  //       });
-  //     console.log(res);
-  //   };
-  //   tvshows();
-  // }, []);
 
 =======
   useEffect(() => {
