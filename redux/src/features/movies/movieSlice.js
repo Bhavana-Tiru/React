@@ -44,7 +44,4 @@ const movieSlice = createSlice({
 export const { addMovies } = movieSlice.actions;
 // export const { addshow } = showsSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
-//if we want a value from the store
-//1st movie:- name of the slice here it is movies
-//2nd movie:-which we want to export
 export default movieSlice.reducer;
