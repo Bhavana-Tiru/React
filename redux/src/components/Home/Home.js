@@ -3,11 +3,10 @@ import MovieListing from "../MovieListing/MovieListing";
 import axios from "axios";
 
 const Home = () => {
-  //for apis and for rendering onchange of certain elements
   useEffect(() => {
     const fechMovies = async () => {
       const response = await axios
-        .get(`https://dummyapi.online/api/movies`)
+        .get(`Url here`)
         .catch((err) => {
           console.log("Err :", err);
         });
