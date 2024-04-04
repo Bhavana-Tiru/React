@@ -5,7 +5,7 @@ import { fetchAsyncMovies } from "../../features/movies/movieSlice";
 
 const Home = () => {
   const dispatch = useDispatch();
-  //for apis and for rendering onchange of certain elements
+
   useEffect(() => {
     dispatch(fetchAsyncMovies());
   }, [dispatch]);
@@ -23,15 +23,15 @@ const Home = () => {
   //   tvshows();
   // }, []);
 
-  // useEffect(() => {
-  //   const fechMovies = async () => {
-  //     const response = await axios.get(`Url here`).catch((err) => {
-  //       console.log("Err :", err);
-  //     });
-  //     console.log("The response from api", response);
-  //   };
-  //   fechMovies();
-  // }, []);
+  useEffect(() => {
+    const fechMovies = async () => {
+      const response = await axios.get(`Url here`).catch((err) => {
+        console.log("Err :", err);
+      });
+      console.log("The response from api", response);
+    };
+    fechMovies();
+  }, []);
 
   return (
     <div>
