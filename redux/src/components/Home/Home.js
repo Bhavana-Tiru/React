@@ -14,7 +14,7 @@ const Home = () => {
   // useEffect(() => {
   //   const tvshows = async () => {
   //     const res = await axios
-  //       .get(`https://www.episodate.com/api/most-popular?page=1`)
+  //       .get(`Api url here`)
   //       .catch((err) => {
   //         console.log("Err :", err);
   //       });
