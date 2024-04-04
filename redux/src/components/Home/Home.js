@@ -10,6 +10,19 @@ const Home = () => {
     dispatch(fetchAsyncMovies());
   }, [dispatch]);
 
+  // for shows
+  // useEffect(() => {
+  //   const tvshows = async () => {
+  //     const res = await axios
+  //       .get(`https://www.episodate.com/api/most-popular?page=1`)
+  //       .catch((err) => {
+  //         console.log("Err :", err);
+  //       });
+  //     console.log(res);
+  //   };
+  //   tvshows();
+  // }, []);
+
   return (
     <div>
       <div className="banner-img"></div>
