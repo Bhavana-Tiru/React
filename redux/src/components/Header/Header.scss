@@ -15,6 +15,16 @@
   font-weight: 600;
 }
 
+.shows {
+  color: $font-primary;
+  font-size: 20px;
+  font-weight: 600;
+  &:hover {
+    border: 2px solid white;
+    padding: 5px;
+  }
+}
+
 .user-image,
 .user-image img {
   width: 38px;

@@ -16,9 +16,6 @@ const MovieCard = (props) => {
           <div className="card-info">
             <h4>{data.movie}</h4>
             <p>{data.rating}</p>
-            <a href={data.imdb_url} target="_blank" className="imdb-link">
-              Imb link here
-            </a>
           </div>
         </div>
       </div>

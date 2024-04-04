@@ -38,25 +38,12 @@ const MovieListing = () => {
     );
   }
 
-  // renderShows =
-  //   tvshows.length == 0 ? (
-  //     tvshows.map((tvshow, index) => <MovieCard key={index} data={tvshow} />)
-  //   ) : (
-  //     <div className="shows-error">
-  //       <h3>No shows available</h3>
-  //     </div>
-  //   );
-
   return (
     <div className="movie-wrapper">
       <div className="movie-list">
         <h2>Movies</h2>
         <div className="movie-conatiner">{renderMovies}</div>
       </div>
-      {/* <div className="show-list">
-        <h2>Shows</h2>
-        <div className="movie-conatiner">{renderShows}</div>
-      </div> */}
     </div>
   );
 };
