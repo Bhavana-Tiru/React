@@ -12,8 +12,20 @@ export const fetchAsyncMovies = createAsyncThunk(
   }
 );
 
+export const fetchAsyncMoviesDetails = createAsyncThunk(
+  "movies/fetchAsyncMoviesDetails",
+  async () => {
+    const response = await axios.get(`https://dummyapi.online/api/movies`);
+    // .catch((err) => {
+    //   console.log("Err :", err);
+    // });
+    return response.data;
+  }
+);
+
 const initialState = {
   movies: {},
+  slectedMovie: {},
 };
 
 const movieSlice = createSlice({
@@ -37,6 +49,10 @@ const movieSlice = createSlice({
       })
       .addCase(fetchAsyncMovies.rejected, () => {
         console.log("Rejected");
+      })
+      .addCase(fetchAsyncMoviesDetails.fulfilled, (state, { payload }) => {
+        console.log("Fetched Sucessfully!");
+        return { ...state, slectedMovie: payload };
       });
   },
 });
@@ -44,4 +60,5 @@ const movieSlice = createSlice({
 export const { addMovies } = movieSlice.actions;
 // export const { addshow } = showsSlice.actions;
 export const getAllMovies = (state) => state.movies.movies;
+export const getMovieDetails = (state) => state.movies.slectedMovie;
 export default movieSlice.reducer;
