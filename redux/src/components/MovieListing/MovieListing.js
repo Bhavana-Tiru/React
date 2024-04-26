@@ -7,9 +7,9 @@ import "./MovieListing.scss";
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
 
-  let renderMovies = "";
+  let renderMovies = [];
 
-  if (movies.length > 8) {
+  if (movies.length > 0) {
     renderMovies = movies.map((movie, index) => (
       <MovieCard key={index} data={movie} />
     ));
