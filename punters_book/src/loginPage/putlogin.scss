@@ -1,0 +1,60 @@
+.loginpage {
+  width: 500px;
+  height: max-content;
+  padding-top: 30px;
+  margin-top: 10px;
+  margin-bottom: 45px;
+  display: inline-flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 25px;
+}
+
+.image {
+  img {
+    display: block;
+    max-width: 250px;
+    max-height: 250px;
+    margin-left: 30px;
+  }
+  justify-content: center;
+}
+.password {
+  justify-content: flex-start;
+}
+.inputs p {
+  text-align: start;
+}
+.loginbut {
+  width: 300px;
+  height: 40px;
+  background-color: #4e73df;
+  color: white;
+  border-radius: 15px;
+  border-color: white;
+}
+.email .password input {
+  border-radius: 25px;
+  max-width: 300px;
+  padding: 10px;
+  max-height: 35px;
+  font-size: 20px;
+}
+.email.password {
+  float: left;
+}
+@media screen and (max-width: 500px) {
+  .loginimg,
+  .inputs {
+    width: 50%;
+  }
+}
+.eyebutton {
+  border: none;
+  background-color: none;
+}
+
+.header {
+  background-color: #4e73df;
+}

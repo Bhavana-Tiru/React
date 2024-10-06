@@ -1,0 +1,525 @@
+import "../SideNavbar/sidenavbar.scss";
+import * as React from "react";
+import { useNavigate } from "react-router-dom";
+import { ListItemIcon, Drawer, Box } from "@mui/material";
+import ListItemButton from "@mui/material/ListItemButton";
+import List from "@mui/material/List";
+import ListItemText from "@mui/material/ListItemText";
+import Collapse from "@mui/material/Collapse";
+import PieChartIcon from "@mui/icons-material/PieChart";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
+import PeopleIcon from "@mui/icons-material/People";
+import CategoryIcon from "@mui/icons-material/Category";
+import SportsIcon from "@mui/icons-material/Sports";
+import Groups2Icon from "@mui/icons-material/Groups2";
+import BatchPredictionIcon from "@mui/icons-material/BatchPrediction";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import DiamondIcon from "@mui/icons-material/Diamond";
+import CreateIcon from "@mui/icons-material/Create";
+import HexagonTwoToneIcon from "@mui/icons-material/HexagonTwoTone";
+import SettingsTwoToneIcon from "@mui/icons-material/SettingsTwoTone";
+import NotificationsActiveTwoToneIcon from "@mui/icons-material/NotificationsActiveTwoTone";
+import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
+import AccountCircleTwoToneIcon from "@mui/icons-material/AccountCircleTwoTone";
+
+export default function SideNavbar() {
+
+  const [openDropdown, setOpenDropdown] = React.useState(null);
+  const navigate = useNavigate();
+
+  const handleDropdownClick = (dropdownName) => {
+    if (openDropdown === dropdownName) {
+      setOpenDropdown(null);
+    } else {
+      setOpenDropdown(dropdownName);
+    }
+  };
+
+  const handleColorItemClick = (route) => {
+    navigate(route);
+  };
+
+  return (
+    <nav>
+      <Drawer
+        variant="permanent"
+        anchor="left"
+        sx={{
+          width: 240,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: 240,
+            boxSizing: "border-box",
+            top: "70px",
+          },
+        }}
+      >
+        <Box
+          sx={{
+            height: "calc(100vh - 64px)",
+            overflowY: "auto",
+          }}
+        >
+          <List>
+            <ListItemButton
+              // selected={selectedItemId}
+              onClick={() => {
+                handleColorItemClick("/dashboard");
+              }}
+              sx={{
+                "&.Mui-selected": {
+                  backgroundColor: "#84adea",
+                },
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <PieChartIcon />
+              </ListItemIcon>
+              <ListItemText primary="Dashboard" />
+            </ListItemButton>
+
+            <ListItemButton
+              onClick={() => {
+                handleDropdownClick("order");
+                // handleColorItemClick("/orders/transactions");
+              }}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <PaymentsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Orders" />
+            </ListItemButton>
+
+            <Collapse
+              in={openDropdown === "order"}
+              timeout="auto"
+              unmountOnExit
+            >
+              <ListItemButton
+                // selected={selectedItemId}
+                onClick={() => handleColorItemClick("/orders/transactions")}
+                sx={{
+                  pl: 4,
+                  "&.Mui-selected": {
+                    backgroundColor: "#84adea",
+                  },
+                  "&:hover": {
+                    backgroundColor: "lightgray",
+                  },
+                }}
+              >
+                <ListItemIcon>
+                  <CurrencyRupeeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Trasactions" />
+              </ListItemButton>
+
+              <ListItemButton
+                sx={{
+                  pl: 4,
+                  "&:hover": {
+                    backgroundColor: "lightgray",
+                  },
+                }}
+                onClick={() => handleColorItemClick("/orders/gateway")}
+              >
+                <ListItemIcon>
+                  <MonetizationOnIcon />
+                </ListItemIcon>
+                <ListItemText primary="Gateway Transations" />
+              </ListItemButton>
+            </Collapse>
+
+            <ListItemButton
+              onClick={() => handleColorItemClick("/users")}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <PeopleIcon />
+              </ListItemIcon>
+              <ListItemText primary="Users" />
+            </ListItemButton>
+
+            <ListItemButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+              onClick={() => handleColorItemClick("/categories")}
+            >
+              <ListItemIcon>
+                <CategoryIcon />
+              </ListItemIcon>
+              <ListItemText primary="Categories" />
+            </ListItemButton>
+
+            <ListItemButton
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+              onClick={() => handleColorItemClick("/leagues")}
+            >
+              <ListItemIcon>
+                <SportsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Leagues" />
+            </ListItemButton>
+
+            <ListItemButton
+              onClick={() => handleColorItemClick("/teams")}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <Groups2Icon />
+              </ListItemIcon>
+              <ListItemText primary="Teams" />
+            </ListItemButton>
+
+            <ListItemButton
+              onClick={() => {
+                handleDropdownClick("predicitions");
+                handleColorItemClick();
+              }}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <BatchPredictionIcon />
+              </ListItemIcon>
+              <ListItemText primary="Predicitions" />
+            </ListItemButton>
+
+            <Collapse
+              in={openDropdown === "predicitions"}
+              timeout="auto"
+              unmountOnExit
+            >
+              <List component="div" disablePadding>
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/predections/predectionslist");
+                  }}
+                >
+                  <ListItemIcon>
+                    <FormatListBulletedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Predicition List" />
+                </ListItemButton>
+
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/predections/addpredictions");
+                  }}
+                >
+                  <ListItemIcon>
+                    <AddBoxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Add Predicition" />
+                </ListItemButton>
+              </List>
+            </Collapse>
+
+            <ListItemButton
+              onClick={() => {
+                handleDropdownClick("builder");
+                // handleColorItemClick(12);
+              }}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <DiamondIcon />
+              </ListItemIcon>
+              <ListItemText primary="Bet Builder" />{" "}
+            </ListItemButton>
+
+            <Collapse
+              in={openDropdown === "builder"}
+              timeout="auto"
+              unmountOnExit
+            >
+              <List component="div" disablePadding>
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/betbuilder/builderlist");
+                  }}
+                >
+                  <ListItemIcon>
+                    <FormatListBulletedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Bets List" />
+                </ListItemButton>
+
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/betbuilder/createBet");
+                  }}
+                >
+                  <ListItemIcon>
+                    <CreateIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Create Bet" />
+                </ListItemButton>
+
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/betbuilder/betoptions");
+                  }}
+                >
+                  <ListItemIcon>
+                    <FormatListBulletedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Bet options" />
+                </ListItemButton>
+              </List>
+            </Collapse>
+
+            <ListItemButton
+              onClick={() => {
+                handleDropdownClick("parlays");
+                // handleColorItemClick(16);
+              }}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <HexagonTwoToneIcon />
+              </ListItemIcon>
+              <ListItemText primary="Parlays" />
+            </ListItemButton>
+
+            <Collapse
+              in={openDropdown === "parlays"}
+              timeout="auto"
+              unmountOnExit
+            >
+              <List component="div" disablePadding>
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/paralay/parlays");
+                  }}
+                >
+                  <ListItemIcon>
+                    <FormatListBulletedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Parlays" />
+                </ListItemButton>
+              </List>
+
+              <ListItemButton
+                sx={{
+                  pl: 4,
+                  "&:hover": {
+                    backgroundColor: "lightgray",
+                  },
+                }}
+                onClick={() => {
+                  handleColorItemClick("/paralay/createparlay");
+                }}
+              >
+                <ListItemIcon>
+                  <CreateIcon />
+                </ListItemIcon>
+                <ListItemText primary="Create Parlays" />
+              </ListItemButton>
+            </Collapse>
+
+            <ListItemButton
+              onClick={() => {
+                handleDropdownClick("configuration");
+                // handleColorItemClick();
+              }}
+              sx={{
+                "&:hover": {
+                  backgroundColor: "lightgray",
+                },
+              }}
+            >
+              <ListItemIcon>
+                <SettingsTwoToneIcon />
+              </ListItemIcon>
+              <ListItemText primary="Configuration " />
+            </ListItemButton>
+
+            <Collapse
+              in={openDropdown === "configuration"}
+              timeout="auto"
+              unmountOnExit
+            >
+              <List component="div" disablePadding>
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/configaration/notification");
+                  }}
+                >
+                  <ListItemIcon>
+                    <NotificationsActiveTwoToneIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Notifications" />
+                </ListItemButton>
+
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/configaration/storieslist");
+                  }}
+                >
+                  <ListItemIcon>
+                    <FormatListBulletedIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Stories List" />
+                </ListItemButton>
+
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/configaration/addstory");
+                  }}
+                >
+                  <ListItemIcon>
+                    <CreateIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Add Story" />
+                </ListItemButton>
+
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/configaration/headline");
+                  }}
+                >
+                  <ListItemIcon>
+                    <NewspaperTwoToneIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Headlines" />
+                </ListItemButton>
+
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/configaration/profile");
+                  }}
+                >
+                  <ListItemIcon>
+                    <AccountCircleTwoToneIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Profile" />
+                </ListItemButton>
+
+                <ListItemButton
+                  sx={{
+                    pl: 4,
+                    "&:hover": {
+                      backgroundColor: "lightgray",
+                    },
+                  }}
+                  onClick={() => {
+                    handleColorItemClick("/configaration/punterlogs");
+                  }}
+                >
+                  <ListItemIcon>
+                    <NotificationsActiveTwoToneIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Punter Logs" />
+                </ListItemButton>
+              </List>
+            </Collapse>
+          </List>
+        </Box>
+      </Drawer>
+    </nav>
+  );
+}
